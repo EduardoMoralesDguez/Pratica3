@@ -9,8 +9,13 @@ public class Cuenta {
     public Cuenta (int id, double balance, double annualInterestRate, Date dateCreated){
         this.id = id;
         this.balance = balance;
-        this.annualInterestRate = annualInterestRate;
-        this.dateCreated = dateCreated;
+        this.annualInterestRate = annualInterestRate/100;
+        this.dateCreated = new Date();
+    }
+
+    public Cuenta (int id, double balance){
+        this.id = id;
+        this.balance = balance;
     }
 
     public int getId() {
@@ -42,7 +47,7 @@ public class Cuenta {
     }
 
     public double getMonthlyInterestRate() {
-        return (annualInterestRate / 100) / 12;
+        return annualInterestRate / 12;
     }
 
     public double getMonthlyInterest() {
@@ -60,6 +65,4 @@ public class Cuenta {
     public void deposit(double amount) {
         balance += amount;
     }
-
-    
 }
